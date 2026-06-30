@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Kings&display=swap');
+
+* {
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    font-style: normal;
+}
+
+
+/* Polices */
+
+
+.p1 {
+    margin: 0px;
+    font-size: 8em;
+    color: black;
+    font-family: "Kings", cursive;
+    text-align: center;
+}
+
+.p2 {
+    font-size: 1em;
+}
+
+.p3 {
+    font-size: 2em;
+    color: black;
+    text-align: left;
+}
+
+.p4 {
+    font-size: 3em;
+    text-align: left;
+}
+
+.validateurs {
+    display: block;
+    text-align: left;
+}
+
+.submit {
+    color:#000
+}
+
+.titre-realisation {
+    text-align: center;
+}
+
+
+
+/* Commun */
+
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.border {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+
+/* Pied-de-page */
+
+
+footer {
+    background-color: black;
+    padding: 10px 50px 0px 50px;
+    margin-top: auto;
+}
+
+
+/* Index */
+
+
+.block_droite:hover,
+.block_gauche:hover {
+    transition: .3s ease;
+    transform: scale(1.05);
+    text-decoration: none;
+}
+
+a {
+    font-size: 1em;
+    text-decoration: none;
+}
+
+a:hover,
+a:visited {
+    text-decoration: underline;
+    color: white
+}
+
+.block_gauche,
+.block_droite {
+    cursor: pointer;
+    margin: 20px;
+    padding: 27px 27px 27px 27px;
+    box-sizing: border-box;
+    border: 2px solid #FFF;
+    border-radius: 10px;
+    box-shadow: 0 0 22px 0 rgba(0, 0, 0, .05);
+    overflow: hidden;
+    transition: all .3s ease;
+    background-color: black;
+}
+
+.block_gauche {
+    width: 500px;
+    height: 750px;
+}
+
+.block_droite {
+    width: 1100px;
+    height: 750px;
+}
+
+.container {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* Contact */
+
+.contact {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    vertical-align: center;
+    width: 100%;
+    margin: 0 30px 30px 0px;
+    padding: 27px 27px 35px 27px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 22px 0 rgba(0, 0, 0, .05);
+    overflow: hidden;
+    background-color: rgb(0, 0, 0);
+
+    width: 60%;
+    height: 60%;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex: 1;
+    gap: 60px;
+    margin-top: 50px;
+}
+
+
+section{
+    padding: 40px;
+    width: 60%;
+    margin: auto;
+}
+
+.formulaire h2{
+    text-align: center;
+    padding: 15px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: auto;
+}
+
+input[type="submit"],
+input[type="email"],
+input[type="text"],
+textarea {
+    color: black;  
+}
+
+.contact-icons {
+    gap: 2rem;
+
+}
+
+/* Menu */
+
+
+.menu {
+    display: flex;
+    padding: 0;
+    background-color: #213571;
+    justify-content: space-around;
+    font-size: 1.5em;
+}
+
+.menu li {
+    list-style-type: none;
+}
+
+.menu a {
+    display: block;
+    min-width: 120px;
+    margin: 0.5rem;
+    padding: 0.4rem 0;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    transition: all 1s;
+}
+
+.menu a.actif {
+    background-color: #000;
+}
+
+.sidebar {
+    position: fixed;
+    top: 50px;
+    right: 0;
+    height: 23%;
+    width: 200px;
+    background-color: #111;
+    padding-top: 60px;
+    overflow-x: hidden;
+    z-index: 9999;
+    transition: transform 0.5s ease;
+    transform: translateX(100%);
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar a {
+    position: relative;
+    z-index: 10;
+    padding: 8px 8px 8px 20px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    left: 140px;
+    font-size: 36px;
+}
+
+.openbtn {
+    position: absolute;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 15px;
+    border: none;
+    right: 0;
+    z-index: 9999;
+}
+
+.openbtn:hover {
+    background-color: #444;
+}
+
+
+/* Tableau */
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    font-size: 2em;
+}
+
+th,
+td {
+    border: 1px solid white;
+    padding: 10px;
+    text-align: center;
+}
+
+
+/* Mes réalisations */
+
+
+.video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.video-icon {
+    width: 200px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.video-icon:hover {
+    transform: scale(1.1);
+}
+
+.video-player {
+    width: 640px;
+    display: none;
+}
