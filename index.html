@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="auteur" content="Nicolas Boulloud">
+    <title>Index</title>
+    <link rel="stylesheet" href="Styles/Styles.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <a href="index.html">Index</a>
+            <a href="contact.html">Contact</a>
+            <a href="./a_propos.html"> À propos</a>
+            <a href="mes_realisations.html">Mes réalisations</a>
+        </div>
+
+        <button class="openbtn" onclick="openNav()"> ☰ Menu </button>
+
+        <script>
+            function openNav() {
+                document.getElementById("mySidebar").classList.add("open");
+            }
+
+            function closeNav() {
+                document.getElementById("mySidebar").classList.remove("open");
+            }
+        </script>
+
+        <p class="p1">NICOLAS BOULLOUD</p>
+
+    </header>
+
+    <div class="container p2">
+
+        <a href="./a_propos.html" class="block_link block_gauche">
+            <div class="p2">À propos</p>
+
+                <div class="portrait">
+                    <img src="./icones/portrait.jpg" alt="individuel_image" width="420" height="630">
+                </div>
+            </div>
+        </a>
+
+        <a href="./mes_realisations.html" class="block_link block_droite">
+            <p class="p2">Mes réalisations</p>
+            <div class="portrait">
+                <img src="./icones/image_mes_realisations.jpg" alt="individuel_image" width="1000" height="630">
+            </div>
+        </a>
+
+    </div>
+
+    <footer>
+        <nav>
+
+            <p class="p3 footer-link">
+                <a href="./index.html" title="Lien vers l'index"><img src="./icones/logo.png" alt="individuel_image"></a>
+            </p>
+
+            <span class="p2 validateurs">
+                <a href="./mentions_légales.html" title="Lien vers les mentions légales">Mentions légales</a>
+                <span class="p2">⸱</span>
+
+                <a href="https://validator.w3.org/detailed.html" title="Lien vers le validateur W3C - HTML5">Validateur
+                    W3C - HTML5</a>
+                <span class="p2">⸱</span>
+
+                <a href="https://jigsaw.w3.org/css-validator/" title="Lien vers le validateur W3C - CSS3">Validateur W3C
+                    - CSS3</a>
+            </span>
+            <p> © 2026 Tous droits réservés - Portfolio Nicolas Boulloud </p>
+
+        </nav>
+    </footer>
+
+</body>
+
+</html>

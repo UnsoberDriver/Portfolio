@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="auteur" content="Nicolas Boulloud">
+    <title>Contact</title>
+    <link rel="stylesheet" href="Styles/Styles.css">
+</head>
+
+<body>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="index.html">Index</a>
+        <a href="contact.html">Contact</a>
+        <a href="./a_propos.html"> À propos</a>
+        <a href="mes_realisations.html">Mes réalisations</a>
+    </div>
+
+    <button class="openbtn" onclick="openNav()"> ☰ Menu </button>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").classList.add("open");
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").classList.remove("open");
+        }
+    </script>
+
+    <div class="page">
+
+        <div class="contact">
+
+
+            <div class="contact-icons">
+
+                <p class="p2">Contactez-moi</p>
+                <a target="_blank" href="mailto:nicolas.boulloud@iut-tarbes.fr">
+                    <img src="./icones/icone_mail.png" alt="lien vers notre e-mail" width="150" height="150"></a>
+
+                <a target="_blank" href="tel:0623450557">
+                    <img src="./icones/icone_telephone.png" alt="lien vers notre numéro de téléphone" width="100"
+                        height="100"></a>
+
+                <a target="_blank" href="https://wa.me/qr/NHM32C4XNGXHH1">
+                    <img src="./icones/icone_whatsapp.png" alt="lien vers notre e-mail" width="150" height="150"></a>
+
+            </div>
+
+            <section class="formulaire">
+
+                <form method="get" action="#">
+
+                    <fieldset class="identite">
+
+                        <p class="colonne-form p2">
+                            <label for="name">Nom</label>
+                            <input type="text" name="nom" id="name">
+                        </p>
+
+                        <p class="colonne-form p2">
+                            <label for="mail">Email</label>
+                            <input type="email" name="mail" id="mail">
+                        </p>
+
+                    </fieldset>
+                    <br>
+                    <label for="message">Message</label>
+
+                    <textarea rows="8" id="message" name="message"></textarea>
+
+                    <input type="submit" value="ENVOYER">
+
+                </form>
+
+            </section>
+        </div>
+
+    </div>
+
+    <footer>
+        <nav>
+
+            <p class="p3 footer-link">
+                <a href="./index.html" title="Lien vers l'index"><img src="./icones/logo.png" alt="individuel_image"></a>
+            </p>
+
+            <span class="p2 validateurs">
+                <a href="./mentions_légales.html" title="Lien vers les mentions légales">Mentions légales</a>
+                <span class="p2">⸱</span>
+
+                <a href="https://validator.w3.org/detailed.html" title="Lien vers le validateur W3C - HTML5">Validateur
+                    W3C - HTML5</a>
+                <span class="p2">⸱</span>
+
+                <a href="https://jigsaw.w3.org/css-validator/" title="Lien vers le validateur W3C - CSS3">Validateur W3C
+                    - CSS3</a>
+            </span>
+            <p> © 2026 Tous droits réservés - Portfolio Nicolas Boulloud </p>
+
+        </nav>
+    </footer>
+
+</body>
+
+</html>

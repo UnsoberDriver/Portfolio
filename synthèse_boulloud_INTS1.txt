@@ -1,0 +1,11 @@
+Pierre Giraud   //pour lier du code CSS3 au sein d'un fichier HTML5
+https://www.pierre-giraud.com/html-css-apprendre-coder-cours/ou-ecrire-code-css/ 
+
+Zone XHTML      //pour changer la taille des polices
+https://www.aliasdmc.fr/courshtml/cours_html22.html#:~:text=Changer%20la%20taille%20de%20la%20police%20d'une%20portion%20de%20texte&text=Pour%20changer%20la%20taille%20du,propri%C3%A9t%C3%A9s%20de%20la%20Balise%20HTML%20).
+
+MDN - Mozilla   // pour centrer du texte 
+https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/center#:~:text=The%20HTML%20element%20is,to%20be%2C%20.
+
+Grâce a la SAE 106 dédiée au développement d'un site web, je n'ai rencontré que deux problèmes. 
+Faire le menu et la vidéo de la sae 105, pour résoudre le problème j'ai été contraint d'utiliser l'ia vu que mes connaissances en JavaScript sont inexistantes.
