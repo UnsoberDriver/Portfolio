@@ -32,6 +32,21 @@
     </script>
 </head>
 
+
+<script>
+    const trigger = document.getElementById("videoTrigger");
+    const video = document.getElementById("myVideo");
+
+    if (trigger && video) {
+        trigger.addEventListener("click", () => {
+            trigger.style.display = "none";
+            video.style.display = "block";
+            video.play();
+        });
+    }
+</script>
+
+
 <body>
 
     <header>
@@ -40,9 +55,10 @@
             <ul class="navbar-links">
                 <li><a href="index.html" class="actif">Index</a></li>
                 <li><a href="./a_propos.html">À propos</a></li>
-                <li><a href="mes_realisations.html">Réalisations</a></li>
+                <li><a href="#realisations">Réalisations</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><button class="theme-toggle" onclick="toggleTheme()" type="button" aria-label="Basculer le thème clair/sombre" title="Thème clair/sombre">☀</button></li>
+                <li><button class="theme-toggle" onclick="toggleTheme()" type="button"
+                        aria-label="Basculer le thème clair/sombre" title="Thème clair/sombre">☀</button></li>
             </ul>
         </nav>
 
@@ -145,16 +161,65 @@
 
     </section>
 
-    <div class="container p2">
+    <section id="realisations" class="border">
 
-        <a href="./mes_realisations.html" class="block_link block_droite">
-            <p class="p2">Mes réalisations</p>
-            <div class="portrait">
-                <img src="./icones/image_mes_realisations.jpg" alt="individuel_image" width="1000" height="630">
-            </div>
-        </a>
+        <div class="section-heading">
+            <span class="section-heading-title">Réalisations</span>
+            <span class="section-heading-line"></span>
+        </div>
 
-    </div>
+        <div class="projects-grid">
+
+            <article class="project-card">
+
+                <video class="project-media" autoplay muted loop>
+                    <source src="./vidéo/INTS1.mp4" type="video/mp4">
+                </video>
+
+                <div class="project-content">
+                    <h3>SAE 105 - Jeu Scratch</h3>
+
+                    <p>
+                        Développement d'un jeu vidéo réalisé sous Scratch dans le
+                        cadre de la SAE 105.
+                    </p>
+
+                    <div class="project-tags">
+                        <span>Scratch</span>
+                        <span>Programmation</span>
+                        <span>Jeu vidéo</span>
+                    </div>
+                </div>
+
+            </article>
+
+            <article class="project-card">
+
+                <img class="project-media" src="./icones/systeme_vote.jpg" alt="Système de vote">
+
+                <div class="project-content">
+                    <h3>SAE 203 - Système de vote</h3>
+
+                    <p>
+                        Conception d'un système de vote permettant la création et la
+                        gestion de scrutins interactifs.
+                    </p>
+
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>PHP</span>
+                        <span>JavaScript</span>
+                        <span>MySQL</span>
+
+                    </div>
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
 
     <footer>
         <nav>
@@ -177,7 +242,8 @@
     </footer>
 
     <div class="social-float">
-        <a href="https://www.linkedin.com/in/nicolas-boulloud/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+        <a href="https://www.linkedin.com/in/nicolas-boulloud/" target="_blank" rel="noopener" aria-label="LinkedIn"
+            title="LinkedIn">
             <svg viewBox="0 0 24 24">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                 <rect x="2" y="9" width="4" height="12"></rect>
