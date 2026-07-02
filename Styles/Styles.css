@@ -519,6 +519,43 @@ textarea {
 }
 
 
+.header-compact {
+    min-height: 0;
+    padding-top: 130px;
+    padding-bottom: 30px;
+}
+
+
+/* Mentions légales */
+
+.legal-content {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.legal-title {
+    font-size: 3.2em;
+    font-weight: 800;
+    text-align: left;
+    margin: 40px 0 40px 0;
+}
+
+.legal-heading {
+    font-size: 1.8em;
+    font-weight: 700;
+    text-align: left;
+    margin: 45px 0 15px 0;
+}
+
+.legal-text {
+    font-size: 1.15em;
+    text-align: left;
+    line-height: 1.25;
+    margin: 0 0 8px 0;
+}
+
+
 /* Tableau */
 
 

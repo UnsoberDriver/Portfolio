@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="auteur" content="Nicolas Boulloud">
+    <title>Mentions légales</title>
+    <link rel="stylesheet" href="Styles/Styles.css">
+    <script>
+        (function () {
+            if (localStorage.getItem('theme') === 'light') {
+                document.documentElement.classList.add('theme-light');
+            }
+        })();
+
+        function toggleTheme() {
+            var root = document.documentElement;
+            root.classList.toggle('theme-light');
+            var isLight = root.classList.contains('theme-light');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            updateThemeIcon();
+        }
+
+        function updateThemeIcon() {
+            var isLight = document.documentElement.classList.contains('theme-light');
+            document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+                btn.textContent = isLight ? '☾' : '☀';
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', updateThemeIcon);
+    </script>
+</head>
+
+<body>
+
+    <div class="border">
+
+        <header class="header-compact">
+
+            <nav class="navbar">
+                <ul class="navbar-links">
+                    <li><a href="index.html" class="actif">Index</a></li>
+                    <li><a href="./a_propos.html">À propos</a></li>
+                    <li><a href="#realisations">Réalisations</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><button class="theme-toggle" onclick="toggleTheme()" type="button"
+                            aria-label="Basculer le thème clair/sombre" title="Thème clair/sombre">☀</button></li>
+                </ul>
+            </nav>
+
+        </header>
+
+        <div class="legal-content">
+
+            <p class="legal-title">Mentions Légales</p>
+
+            <p class="legal-heading">Website editor</p>
+
+            <p class="legal-text">Ce site est édité par : <strong>Nicolas Boulloud</strong></p>
+            <p class="legal-text">Adresse : <strong>65000 Tarbes, France</strong></p>
+            <p class="legal-text">Email : <strong>Boulloud.nicolas@gmail.com</strong></p>
+
+            <p class="legal-heading">Hébergement</p>
+
+            <p class="legal-text">Ce site est hébergé par : <strong>GitHub, Inc.</strong></p>
+            <p class="legal-text">88 Colin P. Kelly Jr. Street, San Francisco, California 94107, États-Unis</p>
+            <p class="legal-text">Téléphone : +1 877-448-4820</p>
+            <p class="legal-text">Site web : <a href="https://github.com" target="_blank">github.com</a></p>
+
+            <p class="legal-heading"></p>
+
+            <p class="legal-text">
+                L'ensemble des éléments de ce site (textes, images, logos, etc.) sont, sauf mention contraire, la
+                propriété de Nicolas Boulloud.
+            </p>
+            <p class="legal-text">
+                Les marques du Portfolio - Nicolas Boulloud, ainsi que les logos figurant sur le site, ne sont pas
+                des marques déposées ; vous êtes libre de les reproduire ou de les réutiliser.
+            </p>
+            <p class="legal-text">
+                Certaines ressources utilisées sur le site (polices, icônes) restent la propriété de leurs auteurs
+                respectifs et sont utilisées conformément à leurs licences.
+            </p>
+
+            <p class="legal-heading">4. Données personnelles</p>
+
+            <p class="legal-text">
+                Ce site n'utilise aucun cookie et ne procède à aucune collecte automatique de données personnelles.
+            </p>
+            <p class="legal-text">
+                Les informations transmises via le formulaire de contact sont utilisées uniquement pour répondre à
+                votre demande et ne sont jamais revendues à des tiers.
+            </p>
+            <p class="legal-text">
+                Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit
+                d'accès, de rectification et de suppression de vos données. Pour l'exercer, contactez :
+                <a href="mailto:Boulloud.nicolas@gmail.com">Boulloud.nicolas@gmail.com</a>
+            </p>
+
+            <p class="legal-heading">5. Limitation de responsabilité</p>
+
+            <p class="legal-text">
+                Les informations accessibles sur ce site proviennent de sources considérées comme fiables. Je me
+                réserve le droit de les corriger ou de modifier tout ou partie du site à tout moment, sans préavis.
+            </p>
+            <p class="legal-text">
+                Ce site peut proposer des liens vers d'autres sites. Je ne suis pas en mesure de contrôler ces
+                sources externes et décline toute responsabilité quant à leur contenu.
+            </p>
+            <p class="legal-text">
+                Le téléchargement de tout matériel depuis ce site se fait à vos propres risques ; je ne saurais être
+                tenu responsable d'un dommage ou d'un virus affectant votre matériel suite à cette utilisation.
+            </p>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <nav>
+
+            <p class="p3 footer-link">
+                <a href="./index.html" title="Lien vers l'index"><img src="./icones/logo.png"
+                        alt="individuel_image"></a>
+            </p>
+
+            <span class="p2 validateurs">
+                <a href="./mentions_légales.html" title="Lien vers les mentions légales">Mentions légales</a>
+                <span class="p2">⸱</span>
+
+                <a href="https://validator.w3.org/detailed.html" title="Lien vers le validateur W3C - HTML5">Validateur
+                    W3C - HTML5</a>
+                <span class="p2">⸱</span>
+
+                <a href="https://jigsaw.w3.org/css-validator/" title="Lien vers le validateur W3C - CSS3">Validateur W3C
+                    - CSS3</a>
+            </span>
+            <p> © 2026 Tous droits réservés - Portfolio Nicolas Boulloud </p>
+
+        </nav>
+    </footer>
+
+</body>
+
+</html>
