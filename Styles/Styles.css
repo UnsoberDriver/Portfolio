@@ -191,30 +191,42 @@ footer hr {
 .footer-top {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap: 40px;
-    padding: 40px 0 20px 0;
-    text-align: center;
+    padding: 40px 0 30px 0;
+    text-align: left;
+}
+
+
+
+.footer-brand {
+    align-items: flex-start;
+    text-align: left;
+    flex: 1;
+    transform: translateX(140px);
+}
+
+
+.footer-col:last-child {
+    transform: translateX(-110px);
 }
 
 .footer-col {
     flex: 1;
     min-width: 200px;
-    text-align: center;
+    text-align: left;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.footer-brand {
-    flex: 1.4;
+    margin-bottom: 10px;
 }
 
 .footer-name {
     font-size: 1.8em;
     font-weight: 800;
     margin: 0 0 14px 0;
-    text-align: center;
+    text-align: left;
 }
 
 .footer-bio {
@@ -222,26 +234,41 @@ footer hr {
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.6);
     margin: 0;
-    text-align: center;
+    text-align: left;
     max-width: 340px;
 }
+
+
+.footer-col:nth-child(2) .footer-links {
+    align-items: flex-start;
+}
+
+.footer-col:nth-child(2) .footer-col-title,
+.footer-col:nth-child(2) .footer-links li,
+.footer-col:nth-child(2) .footer-links a {
+    text-align: left;
+}
+
 
 .footer-col-title {
     font-size: 1.2em;
     font-weight: 700;
     margin: 0 0 16px 0;
-    text-align: center;
+    text-align: left;
 }
 
 .footer-links {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
 }
+
+
+.footer-links li {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
 
 .footer-links a {
     font-size: 0.95em;
@@ -445,6 +472,7 @@ section {
     border-radius: 999px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
     transition: transform 0.25s ease;
+    margin-top: 40px;
 }
 
 .cv-button:hover {
@@ -516,19 +544,6 @@ section {
     font-weight: 800;
     line-height: 1.05;
     margin: 0;
-}
-
-.formulaire h2{
-    text-align: center;
-    padding: 15px;
-}
-
-form{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 50%;
-    margin: auto;
 }
 
 input[type="submit"],
