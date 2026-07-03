@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="auteur" content="Nicolas Boulloud">
+    <title>Mes réalisations</title>
+    <link rel="stylesheet" href="Styles/Styles.css">
+    <script>
+        (function () {
+            if (localStorage.getItem('theme') === 'light') {
+                document.documentElement.classList.add('theme-light');
+            }
+        })();
+
+        function toggleTheme() {
+            var root = document.documentElement;
+            root.classList.toggle('theme-light');
+            var isLight = root.classList.contains('theme-light');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            updateThemeIcon();
+        }
+
+        function updateThemeIcon() {
+            var isLight = document.documentElement.classList.contains('theme-light');
+            document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+                btn.textContent = isLight ? '☾' : '☀';
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', updateThemeIcon);
+    </script>
+</head>
+
+<body>
+
+    <header>
+
+        <nav class="navbar">
+
+            <ul class="navbar-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./projects.html" class="actif">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><button class="theme-toggle" onclick="toggleTheme()" type="button"
+                        aria-label="Basculer le thème clair/sombre" title="Thème clair/sombre">☀</button></li>
+            </ul>
+        </nav>
+
+        <p class="p1">My projects</p>
+
+    </header>
+
+    <p class="p3 titre-realisation">Sae 105 : jeu Scratch</p>
+
+    <div class="video-container">
+
+        <img id="videoTrigger" src="./icones/icone_plus.png" alt="Lancer la vidéo" class="video-icon">
+
+        <video id="myVideo" class="video-player">
+            <source src="./vidéo/INTS1.mp4" type="video/mp4">
+        </video>
+
+    </div>
+
+    <script>
+        const trigger = document.getElementById("videoTrigger");
+        const video = document.getElementById("myVideo");
+        let hasPlayed = false;
+
+        trigger.addEventListener("click", () => {
+            if (hasPlayed) return;
+
+            hasPlayed = true;
+            trigger.style.display = "none";
+            video.style.display = "block";
+            video.play();
+        });
+    </script>
+
+    <footer>
+        <nav>
+
+            <div class="footer-top">
+
+                <div class="footer-col footer-brand">
+                    <p class="footer-name">Nicolas Boulloud</p>
+                    <p class="footer-bio">
+                        Student in Multimedia and Internet Technologies passionate about web development and creating
+                        modern and accessible digital experiences.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <p class="footer-col-title">Navigation</p>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="./about.html">About</a></li>
+                        <li><a href="./projects.html">Projects</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <p class="footer-col-title">Contact &amp; Réseaux</p>
+
+                    <p class="footer-contact-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22 6 12 13 2 6"></polyline>
+                        </svg>
+                        <a href="mailto:boulloud.nicolas@gmail.com">boulloud.nicolas@gmail.com</a>
+                    </p>
+
+                    <p class="footer-contact-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Tarbes, France
+                    </p>
+
+                    <p class="footer-follow-label">Follow me :</p>
+                    <div class="footer-socials">
+                        <a href="https://www.linkedin.com/in/nicolas-boulloud/" target="_blank" rel="noopener"
+                            aria-label="LinkedIn" title="LinkedIn">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/UnsoberDriver" target="_blank" rel="noopener" aria-label="GitHub"
+                            title="GitHub">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr>
+            <div class="footer-row">
+                <p class="p2 copyright">© 2026 Nicolas Boulloud. All right reserved.</p>
+                <a class="p2 legal-link" href="./legal_notices.html" title="Link toward the legal notices">Legal
+                    Notices</a>
+            </div>
+
+        </nav>
+    </footer>
+
+</body>
+
+</html>
