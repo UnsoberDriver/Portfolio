@@ -53,9 +53,9 @@
 
         <nav class="navbar">
             <ul class="navbar-links">
-                <li><a href="index.html" class="actif">Index</a></li>
-                <li><a href="./a_propos.html">À propos</a></li>
-                <li><a href="#realisations">Réalisations</a></li>
+                <li><a href="index.html" class="actif">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./projects.html">Projects</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><button class="theme-toggle" onclick="toggleTheme()" type="button"
                         aria-label="Basculer le thème clair/sombre" title="Thème clair/sombre">☀</button></li>
@@ -85,72 +85,50 @@
             <div class="profile-photo">
                 <img src="./icones/portrait2.jpg" alt="Photo de Nicolas Boulloud">
             </div>
-            <p class="profile-name">Nicolas</p>
+            <div class="profile-name-stack">
+                <p class="profile-name">Boulloud</p>
+                <p class="profile-name">Nicolas</p>
+            </div>
         </div>
 
-        <p class="p3 question">Quelle est la raison du choix de la filiaire MMI ?</p>
-        <p class="p3">Parmis les 4 choix que j'avais inscrit sur parcoursup, seul un a été accepté, alors sans
-            plus attendre
-            j'ai décidé de le valider. L'IUT de Tarbes est la seul option qui me permettait de vivre seul puisque
-            j'habitait à Pau.
-            Ainsi, j'ai la possiblité de consolider mes connaissances culinaires !
+        <p class="p3">Second-year student in Multimedia and Internet Technologies at the Institute of Technology of
+            Tarbes. Passionate about web development and design, I create intuitive and aesthetic user experiences by
+            combining design and development. I am seeking a work-study position for my third year to further develop my
+            technical skills and contribute to real-world digital projects.
+
+
         </p>
 
         <hr>
 
-        <p class="p3 question">La filiaire correspond t-elle a mes attentes ?</p>
-        <p class="p3">Pas vraiment, je ne savais pas qu'il fallait attendre 3 semestres pour pouvoir se spécialiser.
-            Je trouve qu'une année est amplement suffisant pour trouver sa filiaire.
-        </p>
+        <h3 class="timeline-heading">My Education</h3>
+
+        <ul class="timeline">
+            <li class="timeline-item">
+                <span class="timeline-marker"></span>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <h4 class="timeline-title">IUT de Tarbes</h4>
+                        <span class="timeline-date">2024 - 2027</span>
+                    </div>
+                    <p class="timeline-subtitle">Bac +1 - Multimedia and Internet Technologies</p>
+                </div>
+            </li>
+            <li class="timeline-item">
+                <span class="timeline-marker"></span>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <h4 class="timeline-title">Lycée Saint (Pau)</h4>
+                        <span class="timeline-date">2021 - 2023</span>
+                    </div>
+                    <p class="timeline-subtitle">Première / Terminale</p>
+                </div>
+            </li>
+        </ul>
 
         <hr>
 
-        <p class="p3 question">Quelle est ma vision de la filiaire MMI :</p>
-        <p class="p3">J'ai fais les portes ouvertes et j'ai eu la chance de pouvoir poser des questions a Mr. Brulin qui
-            m'a très bien
-            expliquer a quoi je devais m'attendre
-        </p>
-
-        <hr>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Parcours scolaire</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Maternelle - Joyeux Béarne (Pau)</td>
-                </tr>
-                <tr>
-                    <td>CP / CE1 - Marancy (Pau)</td>
-                </tr>
-                <tr>
-                    <td>CE2 / CM1 - Saint-Dominique (Pau)</td>
-                </tr>
-                <tr>
-                    <td>CM2 / 6ème / 5ème - Ecole ELF Michelin (Port-Harcourt)</td>
-                </tr>
-                <tr>
-                    <td>4ème - Lycée Stendhal (Milan) (Port-Harcourt)</td>
-                </tr>
-                <tr>
-                    <td>3ème / Seconde - Institut Saint-Dominique (Pau)</td>
-                </tr>
-                <tr>
-                    <td>Première / Terminale - Lycée Saint (Pau)</td>
-                </tr>
-                <tr>
-                    <td>Bac +1 - IUT de Tarbes</td>
-                </tr>
-            </tbody>
-
-        </table>
-
-        <hr>
-
-        <a href="./icones/CV.jpg" target="_blank" rel="noopener" class="cv-button">
+        <a href="./icones/CV.pdf" target="_blank" rel="noopener" class="cv-button">
             View my CV
             <svg viewBox="0 0 24 24">
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -164,32 +142,34 @@
     <section id="realisations" class="border">
 
         <div class="section-heading">
-            <span class="section-heading-title">Réalisations</span>
+            <span class="section-heading-title">Projects</span>
             <span class="section-heading-line"></span>
         </div>
 
         <div class="projects-grid">
 
-            <article class="project-card">
+            <a class="project-card-link" href="https://romanbg.itch.io/maze-gate-of-hell" target="_blank" rel="noopener">
+                <article class="project-card">
 
-                <img src="./icones/image.avif" alt="Système de vote">
+                    <img src="./icones/image.avif" alt="Système de vote">
 
-                <div class="project-content">
-                    <h3>SAE 105 - Jeu Scratch</h3>
+                    <div class="project-content">
+                        <h3>SAE 105 - Jeu Scratch</h3>
 
-                    <p>
-                        Développement d'un jeu vidéo réalisé sous Scratch dans le
-                        cadre de la SAE 105.
-                    </p>
+                        <p>
+                            Développement d'un jeu vidéo réalisé sous Scratch dans le
+                            cadre de la SAE 105.
+                        </p>
 
-                    <div class="project-tags">
-                        <span>Scratch</span>
-                        <span>Programmation</span>
-                        <span>Jeu vidéo</span>
+                        <div class="project-tags">
+                            <span>Scratch</span>
+                            <span>Programmation</span>
+                            <span>Jeu vidéo</span>
+                        </div>
                     </div>
-                </div>
 
-            </article>
+                </article>
+            </a>
 
             <article class="project-card">
 
@@ -222,13 +202,77 @@
     <footer>
         <nav>
 
+            <div class="footer-top">
 
-            <span class="p2 validateurs">
-                <a href="./legal_notices.html" title="Lien vers les mentions légales">Legal Notices</a>
-                <span class="p2">⸱</span>
+                <div class="footer-col footer-brand">
+                    <p class="footer-name">Nicolas Boulloud</p>
+                    <p class="footer-bio">
+                        Student in Multimedia and Internet Technologies passionate about web development and creating
+                        modern and accessible digital experiences.
+                    </p>
+                </div>
 
-               
-            <p> © 2026 Tous droits réservés - Portfolio Nicolas Boulloud </p>
+                <div class="footer-col">
+                    <p class="footer-col-title">Navigation</p>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="./about.html">About</a></li>
+                        <li><a href="./projects.html">Projects</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <p class="footer-col-title">Contact &amp; Réseaux</p>
+
+                    <p class="footer-contact-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22 6 12 13 2 6"></polyline>
+                        </svg>
+                        <a href="mailto:boulloud.nicolas@gmail.com">boulloud.nicolas@gmail.com</a>
+                    </p>
+
+                    <p class="footer-contact-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Tarbes, France
+                    </p>
+
+                    <p class="footer-follow-label">Follow me :</p>
+                    <div class="footer-socials">
+                        <a href="https://www.linkedin.com/in/nicolas-boulloud/" target="_blank" rel="noopener"
+                            aria-label="LinkedIn" title="LinkedIn">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/UnsoberDriver" target="_blank" rel="noopener" aria-label="GitHub"
+                            title="GitHub">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr>
+            <div class="footer-row">
+                <p class="p2 copyright">© 2026 Nicolas Boulloud. All right reserved.</p>
+                <a class="p2 legal-link" href="./legal_notices.html" title="Link toward the legal notices">Legal
+                    Notices</a>
+            </div>
 
         </nav>
     </footer>
@@ -249,7 +293,7 @@
                 </path>
             </svg>
         </a>
-        <a href="mailto:nicolas.boulloud@iut-tarbes.fr" aria-label="E-mail" title="E-mail">
+        <a href="mailto:boulloud.nicolas@gmail.com" aria-label="E-mail" title="E-mail">
             <svg viewBox="0 0 24 24">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22 6 12 13 2 6"></polyline>
