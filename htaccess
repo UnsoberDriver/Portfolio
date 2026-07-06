@@ -1,0 +1,43 @@
+# Compression au niveau PHP (fallback si mod_deflate est désactivé côté serveur)
+<IfModule mod_php.c>
+    php_flag zlib.output_compression On
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag zlib.output_compression On
+</IfModule>
+<IfModule mod_php8.c>
+    php_flag zlib.output_compression On
+</IfModule>
+
+# Compression des réponses texte (HTML, CSS, JS, JSON, SVG...)
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+    AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript
+    AddOutputFilterByType DEFLATE application/json application/xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+
+    # Evite de recompresser des fichiers déjà compressés par certains proxys buggés
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
+# Alternative si le serveur utilise mod_brotli (souvent absent en mutualisé, mod_deflate suffit sinon)
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css
+    AddOutputFilterByType BROTLI_COMPRESS text/javascript application/javascript application/x-javascript
+    AddOutputFilterByType BROTLI_COMPRESS application/json application/xml image/svg+xml
+</IfModule>
+
+# Mise en cache navigateur pour les ressources statiques
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/avif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType application/pdf "access plus 1 month"
+</IfModule>
