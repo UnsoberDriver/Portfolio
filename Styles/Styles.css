@@ -528,7 +528,7 @@ section {
 
 .profile-block {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 32px;
     margin-bottom: 50px;
     text-align: left
@@ -544,7 +544,6 @@ section {
 .profile-photo {
     flex-shrink: 0;
     width: 380px;
-    height: 570px;
     border-radius: 14px;
     overflow: hidden
 }
@@ -940,10 +939,28 @@ textarea {
 }
 
 .timeline {
+    position: relative;
     list-style: none;
     margin: 0 0 20px 0;
     padding: 0;
     text-align: left
+}
+
+.timeline-glow {
+    position: absolute;
+    left: 9px;
+    top: 0;
+    width: 2px;
+    height: 0;
+    background-color: var(--text-color);
+    box-shadow: 0 0 8px 2px var(--text-color), 0 0 2px 1px var(--text-color);
+    opacity: 0;
+    transition: height 2s ease, opacity .3s ease;
+    pointer-events: none
+}
+
+.timeline-glow.in-view {
+    opacity: 1
 }
 
 .timeline-item {
