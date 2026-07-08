@@ -1,8 +1,8 @@
 <?php
-$db_host = 'sql211.byethost17.com';
-$db_name = 'b17_42342209_portfolio';
-$db_user = 'b17_42342209';
-$db_pass = 'Nicolas410';
+$db_host = '';
+$db_name = '';
+$db_user = '';
+$db_pass = '';
 
 $feedback = $_GET['contact'] ?? '';
 
