@@ -14,7 +14,7 @@ A recipe site I coded in pure PHP to improve my web dev skills (no framework, I 
 
 ## Stack
 
-Native PHP, MySQL/PDO, vanilla HTML/CSS/JS. No framework, no build tool. Images go through GD for AVIF conversion (requires PHP 8.1+).
+Native PHP, MySQL/PDO, vanilla HTML/CSS/JS. No framework, no build tool.
 
 ## Project structure
 
