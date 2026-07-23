@@ -20,28 +20,30 @@ Native PHP, MySQL/PDO, vanilla HTML/CSS/JS. No framework, no build tool. Images 
 
 ```
 /
-├── .env
-└── www/
+├── .env                            # Environment variables (DB credentials, secrets) — never committed
+└── www/                            # Web root
     │
-    ├── main/
-    │   ├── about.html
-    │   ├── contact.html
-    │   ├── legal_notices.html
-    │   ├── privacy_policy.html
-    │   └── projects.html
+    ├── main/                       # Static content pages
+    │   ├── about.html              # About page
+    │   ├── contact.html            # Contact page
+    │   ├── legal_notices.html      # Legal notices
+    │   ├── privacy_policy.html     # Privacy policy
+    │   └── projects.html           # Projects showcase
     │
-    ├── .htaccess
-    ├── google071578dbdfbc3c7f.html
-    ├── index.php
-    ├── sitemap.xml
+    ├── .htaccess                   # URL rewriting, security, browser caching
+    ├── google071578dbdfbc3c7f.html # Google Search Console verification file
+    ├── index.php                   # Home page
+    ├── sitemap.xml                 # XML sitemap for search engines
     │
-    └── assets/
+    └── assets/                     # Static assets
         ├── js/
-        │   └── app.js
+        │   └── app.js              # Main JavaScript file
+        │
         ├── styles/
-        │   └── styles.css
+        │   └── styles.css          # Main stylesheet
+        │
         └── icones/
-            └── pictures
+            └── pictures            # Icon/picture assets
 ```
 ## Security
 
