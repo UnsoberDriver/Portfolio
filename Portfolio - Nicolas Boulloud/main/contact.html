@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="auteur" content="Nicolas Boulloud">
+    <title>Contact</title>
+    <link rel="stylesheet" href="../assets/styles/styles.css">
+    <script>
+        (function () {
+            if (localStorage.getItem('theme') === 'light') {
+                document.documentElement.classList.add('theme-light');
+            }
+        })();
+
+        function toggleTheme() {
+            var root = document.documentElement;
+            root.classList.toggle('theme-light');
+            var isLight = root.classList.contains('theme-light');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            updateThemeIcon();
+        }
+
+        function updateThemeIcon() {
+            var isLight = document.documentElement.classList.contains('theme-light');
+            document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+                btn.textContent = isLight ? '☾' : '☀';
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', updateThemeIcon);
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var params = new URLSearchParams(window.location.search);
+            var feedback = params.get('contact');
+            var form = document.getElementById('contactForm');
+            if (form && feedback === 'success') form.classList.add('show-success');
+            if (form && feedback === 'error') form.classList.add('show-error');
+            if (feedback) {
+                var url = window.location.pathname + window.location.hash;
+                window.history.replaceState(null, '', url);
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="border">
+
+        <header class="header-compact">
+
+            <nav class="navbar">
+                <ul class="navbar-links">
+                    <li><a href="../index.php">Home</a></li>
+                    <li><a href="../index.php#about">About</a></li>
+                    <li><a href="../index.php#realisations">Projects</a></li>
+                    <li><a href="../index.php#contact">Contact</a></li>
+                    <li><button class="theme-toggle" onclick="toggleTheme()" type="button"
+                            aria-label="Basculer le thème clair/sombre" title="Thème clair/sombre">☀</button></li>
+                </ul>
+            </nav>
+
+        </header>
+
+    </div>
+
+    <div class="page">
+
+        <div class="contact">
+
+
+            <div class="contact-icons">
+
+                <p class="p2">Contactez-moi</p>
+                <a target="_blank" href="mailto:nicolas.boulloud@iut-tarbes.fr">
+                    <img src="../assets/icones/icone_mail.png" alt="lien vers notre e-mail" width="150" height="150"></a>
+
+                <a target="_blank" href="tel:0623450557">
+                    <img src="../assets/icones/icone_telephone.png" alt="lien vers notre numéro de téléphone" width="100"
+                        height="100"></a>
+
+                <a target="_blank" href="https://wa.me/qr/NHM32C4XNGXHH1">
+                    <img src="../assets/icones/icone_whatsapp.png" alt="lien vers notre e-mail" width="150" height="150"></a>
+
+            </div>
+
+            <section class="formulaire">
+
+                <form id="contactForm" class="contact-form" action="../index.php" method="post">
+                    <h3 class="contact-form-title">Envoyez-moi un message !</h3>
+
+                    <p class="contact-form-feedback contact-form-feedback-success">Message envoyé, merci !</p>
+                    <p class="contact-form-feedback contact-form-feedback-error">Une erreur est survenue, réessaie.
+                    </p>
+
+                    <div class="contact-form-row">
+                        <input type="text" name="prenom" placeholder="Prénom" required>
+                        <input type="text" name="nom" placeholder="Nom" required>
+                    </div>
+
+                    <textarea name="message" placeholder="Message" required></textarea>
+
+                    <input type="hidden" name="redirect" value="main/contact.html">
+
+                    <button type="submit" class="contact-form-submit">
+                        Envoyer
+                        <svg viewBox="0 0 24 24" width="18" height="18">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </form>
+
+            </section>
+        </div>
+
+    </div>
+
+    <footer>
+        <nav>
+
+            <div class="footer-top">
+
+                <div class="footer-col footer-brand">
+                    <p class="footer-name">Nicolas Boulloud</p>
+                    <p class="footer-bio">
+                        Student in Multimedia and Internet Technologies passionate about web development and creating
+                        modern and accessible digital experiences.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <p class="footer-col-title">Navigation</p>
+                    <ul class="footer-links">
+                        <li><a href="../index.php">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <p class="footer-col-title">Contact &amp; Réseaux</p>
+
+                    <p class="footer-contact-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22 6 12 13 2 6"></polyline>
+                        </svg>
+                        <a href="mailto:boulloud.nicolas@gmail.com">boulloud.nicolas@gmail.com</a>
+                    </p>
+
+                    <p class="footer-contact-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Tarbes, France
+                    </p>
+
+                    <p class="footer-follow-label">Follow me :</p>
+                    <div class="footer-socials">
+                        <a href="https://www.linkedin.com/in/nicolas-boulloud/" target="_blank" rel="noopener"
+                            aria-label="LinkedIn" title="LinkedIn">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/UnsoberDriver" target="_blank" rel="noopener" aria-label="GitHub"
+                            title="GitHub">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr>
+            <div class="footer-row">
+                <p class="p2 copyright">© 2026 Nicolas Boulloud. All right reserved.</p>
+                <a class="p2 legal-link" href="legal_notices.html" title="Link toward the legal notices">Legal
+                    Notices</a>
+            </div>
+
+        </nav>
+    </footer>
+
+</body>
+
+</html>
