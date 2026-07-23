@@ -36,6 +36,7 @@ Native PHP, MySQL/PDO, vanilla HTML/CSS/JS. No framework, no build tool. Images 
     ├── sitemap.xml                 # XML sitemap for search engines
     │
     └── assets/                     # Static assets
+        │
         ├── js/
         │   └── app.js              # Main JavaScript file
         │
