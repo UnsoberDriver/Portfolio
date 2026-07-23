@@ -61,10 +61,11 @@ The site detects the browser language on first load and displays content in Fren
 
 ## Live
 
-* [homekitchenclub.alwaysdata.net](https://homekitchenclub.alwaysdata.net/)
+* [https://pt-nb.alwaysdata.net](https://pt-nb.alwaysdata.net/)
 
 ## Legal notices
-* [Legal notice](https://homekitchenclub.alwaysdata.net/mentions-legales)
+* [Legal notice](https://pt-nb.alwaysdata.net/main/legal_notices.html)
+* [Privacy policy](https://pt-nb.alwaysdata.net/main/privacy_policy.html)
 
 ## Author
 
