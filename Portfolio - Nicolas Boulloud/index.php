@@ -19,6 +19,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $prenom = trim($_POST['prenom'] ?? '');
     $message = trim($_POST['message'] ?? '');
 
+    // Honeypot : champ invisible pour les humains, souvent rempli par les bots
+    $honeypot = trim($_POST['site_web'] ?? '');
+
+    // Anti-soumission instantanée : un humain met toujours plus de 2s à remplir le formulaire
+    $formLoadedAt = (int) ($_POST['ts'] ?? 0);
+    $elapsed = time() - $formLoadedAt;
+    $tooFast = $formLoadedAt > 0 && $elapsed < 2;
+
+    if ($honeypot !== '' || $tooFast) {
+        // On fait croire au bot que ça a marché, sans rien enregistrer
+        header("Location: {$redirect}?contact=success{$anchor}");
+        exit;
+    }
+
+    // Filtrage de contenu basique : rejet si plusieurs URLs (signe de spam)
+    $urlCount = preg_match_all('/https?:\/\//i', $message);
+    if ($urlCount > 1) {
+        header("Location: {$redirect}?contact=error{$anchor}");
+        exit;
+    }
+
+    // Vérification Cloudflare Turnstile (CAPTCHA invisible)
+    $turnstileSecret = $env['TURNSTILE_SECRET_KEY'] ?? '';
+    $turnstileToken = $_POST['cf-turnstile-response'] ?? '';
+
+    $turnstileOk = false;
+    if ($turnstileSecret !== '' && $turnstileToken !== '') {
+        $ch = curl_init('https://challenges.cloudflare.com/turnstile/v0/siteverify');
+        curl_setopt_array($ch, [
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => http_build_query([
+                'secret' => $turnstileSecret,
+                'response' => $turnstileToken,
+                'remoteip' => $_SERVER['REMOTE_ADDR'] ?? '',
+            ]),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 5,
+        ]);
+        $verifyResponse = curl_exec($ch);
+        curl_close($ch);
+
+        if ($verifyResponse !== false) {
+            $verifyData = json_decode($verifyResponse, true);
+            $turnstileOk = !empty($verifyData['success']);
+        }
+    }
+
+    if (!$turnstileOk) {
+        header("Location: {$redirect}?contact=error{$anchor}");
+        exit;
+    }
+
     if ($nom !== '' && $prenom !== '' && $message !== '') {
         try {
             $pdo = new PDO(
@@ -27,6 +79,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $db_pass,
                 [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
             );
+
+            // Rate limiting par IP : max 3 messages / heure
+            $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+
+            $countStmt = $pdo->prepare(
+                'SELECT COUNT(*) FROM contact_attempts WHERE ip = :ip AND created_at > (NOW() - INTERVAL 1 HOUR)'
+            );
+            $countStmt->execute([':ip' => $ip]);
+            $recentAttempts = (int) $countStmt->fetchColumn();
+
+            if ($recentAttempts >= 3) {
+                header("Location: {$redirect}?contact=error{$anchor}");
+                exit;
+            }
+
+            $logStmt = $pdo->prepare(
+                'INSERT INTO contact_attempts (ip, created_at) VALUES (:ip, NOW())'
+            );
+            $logStmt->execute([':ip' => $ip]);
 
             $stmt = $pdo->prepare(
                 'INSERT INTO messages (nom, prenom, message) VALUES (:nom, :prenom, :message)'
@@ -70,6 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       "url": "https://pt-nb.alwaysdata.net/"
     }
     </script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kings&family=Anton&display=optional"
@@ -88,8 +160,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="icon" type="image/png" sizes="16x16" href="assets/icones/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/icones/favicon-180.png">
     <link rel="shortcut icon" href="assets/icones/favicon.ico">
-    <link rel="preload" as="image" href="assets/icones/fond.avif">
-    <link rel="preload" as="image" href="assets/icones/portrait2.avif" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/icones/fond.png">
+    <link rel="preload" as="image" href="assets/icones/portrait2.png" fetchpriority="high">
     <script>
         (function () {
             if (localStorage.getItem('theme') === 'light') {
@@ -97,11 +169,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         })();
 
-        function toggleTheme() {
+        function toggleTheme(evt) {
             var root = document.documentElement;
-            root.classList.toggle('theme-light');
-            var isLight = root.classList.contains('theme-light');
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            var goingLight = !root.classList.contains('theme-light');
+
+            var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var supportsVT = typeof document.startViewTransition === 'function';
+
+            if (reduceMotion || !supportsVT) {
+                applyTheme(goingLight);
+                return;
+            }
+
+            // Coordonnées du clic (ou centre du bouton) pour l'origine du cercle
+            var x = evt && evt.clientX ? evt.clientX : window.innerWidth / 2;
+            var y = evt && evt.clientY ? evt.clientY : window.innerHeight / 2;
+            var endRadius = Math.hypot(
+                Math.max(x, window.innerWidth - x),
+                Math.max(y, window.innerHeight - y)
+            );
+
+            var transition = document.startViewTransition(function () {
+                applyTheme(goingLight);
+            });
+
+            transition.ready.then(function () {
+                var clipPath = [
+                    'circle(0px at ' + x + 'px ' + y + 'px)',
+                    'circle(' + endRadius + 'px at ' + x + 'px ' + y + 'px)'
+                ];
+
+                document.documentElement.animate(
+                    {
+                        clipPath: goingLight ? clipPath : clipPath.slice().reverse()
+                    },
+                    {
+                        duration: 650,
+                        easing: 'cubic-bezier(.65, 0, .35, 1)',
+                        pseudoElement: goingLight
+                            ? '::view-transition-new(root)'
+                            : '::view-transition-old(root)'
+                    }
+                );
+            });
+        }
+
+        function applyTheme(goingLight) {
+            var root = document.documentElement;
+            root.classList.toggle('theme-light', goingLight);
+            localStorage.setItem('theme', goingLight ? 'light' : 'dark');
             updateThemeIcon();
         }
 
@@ -115,6 +231,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         document.addEventListener('DOMContentLoaded', updateThemeIcon);
     </script>
     <style>
+        /* On désactive le cross-fade par défaut de la View Transitions API */
+        ::view-transition-group(root) {
+            animation-duration: 650ms;
+        }
+
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+            animation: none;
+            mix-blend-mode: normal;
+        }
+
+        ::view-transition-old(root) {
+            z-index: 1;
+        }
+
+        ::view-transition-new(root) {
+            z-index: 9999;
+        }
+
+        /* Passage vers le sombre : l'ancien (clair) doit rester au-dessus pour se refermer en cercle */
+        html:not(.theme-light)::view-transition-old(root) {
+            z-index: 9999;
+        }
+
+        html:not(.theme-light)::view-transition-new(root) {
+            z-index: 1;
+        }
+    </style>
+    <style>
         :root {
             --bg-color: #000;
             --text-color: #fff;
@@ -123,7 +268,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         html.theme-light {
-            --bg-color: #f4f4f4;
+            --bg-color: #fff;
             --text-color: #111;
             --card-bg: #fff;
             --tag-bg: #e6e6e6
@@ -157,6 +302,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             transition: background-color .25s ease
         }
 
+        .contact-form-honeypot {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden
+        }
+
         .p1 {
             position: relative;
             z-index: 2;
@@ -166,7 +319,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             font-family: "Anton", "Arial Narrow", sans-serif;
             text-align: center;
             -webkit-text-stroke: 1.5px currentColor;
-            text-shadow: 0 6px 4px rgba(255, 255, 255, 0.35)
+            text-shadow: none;
+            filter: drop-shadow(0 6px 4px rgba(255, 255, 255, 0.35))
         }
 
         @media(max-width:900px) {
@@ -228,14 +382,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             min-height: 100vh;
             box-sizing: border-box;
             padding-top: 110px;
-            background-image: url('assets/icones/fond.avif');
+            background-image: url('assets/icones/fond.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat
         }
 
         html.theme-light header {
-            background-image: url('assets/icones/fond2.avif')
+            background-image: url('assets/icones/fond2.png')
         }
 
         .hero-title-wrap {
@@ -538,7 +692,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <div class="navbar-actions">
-                <button class="theme-toggle" onclick="toggleTheme()" type="button"
+                <button class="theme-toggle" onclick="toggleTheme(event)" type="button"
                     aria-label="Basculer le thème clair/sombre" title="Thème clair/sombre">☀</button>
                 <button class="navbar-hamburger" id="navbarHamburger" type="button" aria-label="Menu"
                     aria-expanded="false">
@@ -584,7 +738,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </path>
                 </svg>
             </a>
-            <a href="mailto:boulloud.nicolas@gmail.com" aria-label="E-mail" title="E-mail">
+            <a href="#contact" aria-label="Me contacter" title="Me contacter">
                 <svg viewBox="0 0 24 24" width="20" height="20">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22 6 12 13 2 6"></polyline>
@@ -729,20 +883,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </article>
                 </a>
 
-                <a class="project-card-link" href="https://sae203.byethost10.com/?i=1" target="_blank" rel="noopener">
+                <a class="project-card-link" href="https://homekitchenclub.alwaysdata.net/" target="_blank"
+                    rel="noopener">
                     <article class="project-card">
-                        <img class="project-media" src="assets/icones/systeme_vote.avif" alt="Système de vote"
-                            width="800" height="220" loading="lazy">
+                        <img class="project-media" src="assets/icones/fond3.png" alt="Recipes website" width="800"
+                            height="220" loading="lazy">
 
                         <div class="project-content">
-                            <h3>Voting system</h3>
+                            <h3>Recipe website</h3>
 
                             <p>
-                                Design of a voting system enabling the creation and management of interactive polls.
+                                Public recipe browsing, admins can add, remove and update recipes.
                             </p>
 
                             <div class="project-tags">
-                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>PHP</span>
+                                <span>JavaScript</span>
+                                <span>MySQL</span>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+
+                <a class="project-card-link" href="https://homekitchenclub.alwaysdata.net/" target="_blank"
+                    rel="noopener">
+                    <article class="project-card">
+                        <img class="project-media" src="assets/icones/fond4.png" alt="Recipes website" width="800"
+                            height="220" loading="lazy">
+
+                        <div class="project-content">
+                            <h3>Messaging platform</h3>
+
+                            <p>
+                                Nexus Pulse is a private instant messaging platform that lets you communicate with your friends.
+                            </p>
+
+                            <div class="project-tags">
                                 <span>CSS</span>
                                 <span>PHP</span>
                                 <span>JavaScript</span>
@@ -795,14 +972,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </a>
                         </div>
 
-                        <a class="contact-link contact-link-email" href="mailto:boulloud.nicolas@gmail.com">
-                            <svg viewBox="0 0 24 24" width="18" height="18">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                                </path>
-                                <polyline points="22 6 12 13 2 6"></polyline>
-                            </svg>
-                            <span class="contact-link-email-text">boulloud.nicolas@gmail.com</span>
-                        </a>
                     </div>
                 </aside>
 
@@ -814,6 +983,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p class="contact-form-feedback contact-form-feedback-success">Message envoyé, merci !</p>
                     <p class="contact-form-feedback contact-form-feedback-error">Une erreur est survenue, réessaie.</p>
 
+                    <!-- Honeypot anti-bot : champ caché, un humain ne le remplit jamais -->
+                    <div class="contact-form-honeypot" aria-hidden="true">
+                        <label for="site_web">Ne pas remplir ce champ</label>
+                        <input type="text" id="site_web" name="site_web" tabindex="-1" autocomplete="off">
+                    </div>
+                    <input type="hidden" name="ts" value="<?php echo time(); ?>">
+
                     <div class="contact-form-row">
                         <input type="text" name="prenom" placeholder="Prénom" required>
                         <input type="text" name="nom" placeholder="Nom" required>
@@ -821,6 +997,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
                     <textarea name="message" placeholder="Message" required></textarea>
+
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAAD8Eup0N-xa81hF2"></div>
 
                     <button type="submit" class="contact-form-submit">
                         Envoyer
@@ -851,7 +1029,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </path>
                             <polyline points="22 6 12 13 2 6"></polyline>
                         </svg>
-                        <a href="mailto:boulloud.nicolas@gmail.com">boulloud.nicolas@gmail.com</a>
+                        <a href="#contact">Me contacter</a>
                     </p>
 
                     <p class="footer-contact-item">
