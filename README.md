@@ -73,8 +73,10 @@ Nicolas Boulloud — [LinkedIn](https://www.linkedin.com/in/nicolas-boulloud/)
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 
-— see the [LICENSE](./LICENSE) file for details.
+## License
+
+This project is proprietary — all rights reserved. See the 
+[LICENSE](./LICENSE) file for details.
 
 See also [NOTICE.md](./NOTICE.md) for additional usage restrictions 
 (including AI training).
