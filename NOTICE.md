@@ -1,4 +1,21 @@
-Additional Notice:
-This repository and its contents (code, documentation, assets) may not 
-be used, in whole or in part, to train, fine-tune, or evaluate any 
-machine learning or AI model, without prior written permission from the author.
+# Notice
+
+## English
+
+This repository is licensed under the GNU General Public License v3.0 
+(see LICENSE file), which governs code reuse and modification.
+
+In addition to the license terms above, the author explicitly states:
+
+This repository and its contents (source code, documentation, assets, 
+and any associated materials) may **not** be used, copied, scraped, 
+or processed — in whole or in part — for the purpose of training, 
+fine-tuning, evaluating, or otherwise developing any machine learning 
+or artificial intelligence model, without prior written permission 
+from the author.
+
+This restriction applies regardless of the method of access (manual 
+download, automated scraping, API access, or any other means).
+
+For permission requests, please open an issue on this repository or 
+contact the author directly.
