@@ -1,7 +1,5 @@
 # Notice
 
-## English
-
 This repository is licensed under the GNU General Public License v3.0 
 (see LICENSE file), which governs code reuse and modification.
 
