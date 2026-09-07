@@ -31,6 +31,32 @@ Portfolio/
         └──styles.css
 ```
 
+```
+/
+├── .env                        # Environment variables (DB credentials, secrets) — never committed
+└── www/
+    │
+    ├── uploads/                # All pictures (outside of the document root)
+    │   └── pictures.avif
+    │
+    ├── lang/                   # Translation files
+    │   ├── en.php              # English translations
+    │   └── fr.php              # French translations
+    │
+    ├── includes/               # Shared PHP files (DB connection, language handling, etc.)
+    │   ├── db.php              # Database connection (PDO)
+    │   ├── lang.php            # Internationalization handling (FR/EN)
+    │   ├── auth_check.php      # Verifies if an admin is connected
+    │   └── image-utils.php     # Resizes pictures if necessary
+    │
+    └── public/                 # Web root (server document root)
+        ├── assets/             # Main stylesheet
+        │   └── style.css
+        │
+        └── recipes/            # Recipe detail page
+            └── recette.php
+```
+
 ## Stats GitHub
 
 <p align="center">
