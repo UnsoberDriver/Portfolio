@@ -8,16 +8,19 @@ Ce repo contient le code source de mon site personnel, développé en PHP/HTML/C
 
 ```
 Portfolio/
+│
 ├── assets/
 │   ├── icones/
 │   ├── js/
 │   └── styles/
+│
 ├── main/
 │   ├── about.html
 │   ├── contact.html
 │   ├── legal_notices.html
 │   ├── privacy_policy.html
 │   └── projects.html
+│
 ├── google071578dbdfbc3c7f.html
 ├── index.php
 └── sitemap.xml
