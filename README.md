@@ -34,4 +34,10 @@ Ce repo contient le code source de mon site personnel, développé en PHP/HTML/C
             └── styles/
                 └── styles.css
 ```
- 
+
+ ## Internationalization
+
+The site detects the browser language on first load and displays content in French or English accordingly. The logic lives in `lang.php`, static text is in `fr.php` / `en.php`, and recipes have `_en` columns in the database with automatic fallback to French if the translation hasn't been filled in yet.
+
+## Author
+Nicolas Boulloud
