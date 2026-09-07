@@ -1,84 +1,31 @@
-# Home Kitchen Club
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,0,0&height=200&section=header&text=Welcome%20to%20my%20GitHub%20profile!&fontSize=40&fontColor=000000&fontAlignY=35" />
+</p>
 
-A recipe site I coded in pure PHP to improve my web dev skills (no framework, I wanted to understand what's happening under the hood). There's a public area to browse recipes, an account system, and an admin dashboard to manage everything.
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=UnsoberDriver&color=blueviolet&style=flat-square&label=Profile+Views" />
+</p>
 
-## What it does
+## Portfolio
 
-* Recipe list filterable by category, with a detailed page per recipe (ingredients, steps, time, difficulty)
-* Live serving adjustment on the recipe page (quantities recalculated in JS)
-* User accounts: sign up / log in, with a "stay logged in" option (remember-me secured by token)
-* Admin dashboard to create, edit, and delete recipes
-* Image upload, automatically converted to AVIF + thumbnail generation
-* Contact form in a popup (AJAX, protected by a CSRF token)
-* Bilingual FR/EN site, auto-detected based on browser language
+Découvrez mon portfolio en ligne : **[pt-nb.alwaysdata.net](https://pt-nb.alwaysdata.net/)**
 
-## Stack
+Ce repo contient le code source de mon site personnel, développé en PHP/HTML/CSS/JS.
 
-Native PHP, MySQL/PDO, vanilla HTML/CSS/JS. No framework, no build tool.
+### Structure
 
-## Project structure
+`main/` : pages du site (about, contact, projects, mentions légales...)
+`assets/` : icônes, styles, scripts
+`index.php` : page d'accueil
 
-```
-/
-├── .env                            # Environment variables (DB credentials, secrets) — never committed
-└── www/                            # Web root
-    │
-    ├── main/                       # Static content pages
-    │   ├── about.html              # About page
-    │   ├── contact.html            # Contact page
-    │   ├── legal_notices.html      # Legal notices
-    │   ├── privacy_policy.html     # Privacy policy
-    │   └── projects.html           # Projects showcase
-    │
-    ├── .htaccess                   # URL rewriting, security, browser caching
-    ├── google071578dbdfbc3c7f.html # Google Search Console verification file
-    ├── index.php                   # Home page
-    ├── sitemap.xml                 # XML sitemap for search engines
-    │
-    └── assets/                     # Static assets
-        │
-        ├── js/
-        │   └── app.js              # Main JavaScript file
-        │
-        ├── styles/
-        │   └── styles.css          # Main stylesheet
-        │
-        └── icones/
-            └── pictures            # Icon/picture assets
-```
-## Security
+## Stats GitHub
 
-A few things I put in place while learning about the topic:
+<p align="center">
+  <img src="https://github-readme-stats-cyan-seven-40.vercel.app/api/top-langs/?username=UnsoberDriver&layout=compact&langs_count=4&theme=tokyonight&bg_color=000000&hide_border=true" width="380"/>
+  <img src="https://github-readme-streak-stats-xlq9-m0kgknx3a.vercel.app/?user=UnsoberDriver&theme=tokyonight&background=000000&hide_border=true" width="480"/>
+</p>
 
-* Passwords hashed with `password_hash` / `password_verify`
-* Prepared SQL statements (PDO) everywhere, no query concatenation
-* CSRF protection on sensitive forms (contact, recipe creation/editing)
-* "Remember me" cookie based on a hashed selector/validator pair (no plaintext token stored server-side), rotated on every use
-
-## Internationalization
-
-The site detects the browser language on first load and displays content in French or English accordingly. The logic lives in `lang.php`, static text is in `fr.php` / `en.php`, and recipes have `_en` columns in the database with automatic fallback to French if the translation hasn't been filled in yet.
-
-## Live
-
-* [https://pt-nb.alwaysdata.net](https://pt-nb.alwaysdata.net/)
-
-## Legal notices
-* [Legal notice](https://pt-nb.alwaysdata.net/main/legal_notices.html)
-* [Privacy policy](https://pt-nb.alwaysdata.net/main/privacy_policy.html)
-
-## Author
-
-Nicolas Boulloud — [LinkedIn](https://www.linkedin.com/in/nicolas-boulloud/)
-
-## License
-
-## License
-
-This project is proprietary — all rights reserved. See the 
-[LICENSE](./LICENSE) file for details.
-
-See also [NOTICE.md](./NOTICE.md) for additional usage restrictions 
-(including AI training).
-
-© 2026 Nicolas Boulloud
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&color=6A0DAD&size=30&center=true&vCenter=true&width=700&lines=Thank+you+for+visiting+my+profile!" />
+</p>
+</file_text>
