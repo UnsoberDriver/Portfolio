@@ -7,31 +7,6 @@ Ce repo contient le code source de mon site personnel, développé en PHP/HTML/C
 ## Structure
 
 ```
-Portfolio/
-│
-├── main/
-│   ├── about.html
-│   ├── contact.html
-│   ├── legal_notices.html
-│   ├── privacy_policy.html
-│   └── projects.html
-│
-├── google071578dbdfbc3c7f.html
-├── index.php
-├── sitemap.xml
-│
-└── assets/
-    │
-    ├── icones/
-    │
-    ├── js/
-    │   └──app.js
-    │
-    └── styles/
-        └──styles.css
-```
-
-```
 /
 ├── .env                        # Environment variables (DB credentials, secrets) — never committed
 └── www/
