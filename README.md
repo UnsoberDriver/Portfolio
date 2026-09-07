@@ -1,11 +1,3 @@
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,0,0&height=200&section=header&text=Welcome%20to%20my%20GitHub%20profile!&fontSize=40&fontColor=000000&fontAlignY=35" />
-</p>
-
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=UnsoberDriver&color=blueviolet&style=flat-square&label=Profile+Views" />
-</p>
-
 ## Portfolio
 
 Découvrez mon portfolio en ligne : **[pt-nb.alwaysdata.net](https://pt-nb.alwaysdata.net/)**
@@ -14,9 +6,22 @@ Ce repo contient le code source de mon site personnel, développé en PHP/HTML/C
 
 ### Structure
 
-`main/` : pages du site (about, contact, projects, mentions légales...)
-`assets/` : icônes, styles, scripts
-`index.php` : page d'accueil
+```
+Portfolio/
+├── assets/
+│   ├── icones/
+│   ├── js/
+│   └── styles/
+├── main/
+│   ├── about.html
+│   ├── contact.html
+│   ├── legal_notices.html
+│   ├── privacy_policy.html
+│   └── projects.html
+├── google071578dbdfbc3c7f.html
+├── index.php
+└── sitemap.xml
+```
 
 ## Stats GitHub
 
