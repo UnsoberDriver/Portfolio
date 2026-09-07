@@ -4,15 +4,10 @@ Découvrez mon portfolio en ligne : **[pt-nb.alwaysdata.net](https://pt-nb.alway
 
 Ce repo contient le code source de mon site personnel, développé en PHP/HTML/CSS/JS.
 
-### Structure
+## Structure
 
 ```
 Portfolio/
-│
-├── assets/
-│   ├── icones/
-│   ├── js/
-│   └── styles/
 │
 ├── main/
 │   ├── about.html
@@ -23,7 +18,17 @@ Portfolio/
 │
 ├── google071578dbdfbc3c7f.html
 ├── index.php
-└── sitemap.xml
+├── sitemap.xml
+│
+└── assets/
+    │
+    ├── icones/
+    │
+    ├── js/
+    │   └──app.js
+    │
+    └── styles/
+        └──styles.css
 ```
 
 ## Stats GitHub
