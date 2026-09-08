@@ -8,7 +8,7 @@ This repo contains the source code of my personal website, made with love in PHP
 
 ```
 /
-├── .env                        # Environment variables (DB credentials, secrets) — never committed
+├── .env
 └── www/
     │
     └── Portfolio/
@@ -33,35 +33,6 @@ This repo contains the source code of my personal website, made with love in PHP
             │
             └── styles/
                 └── styles.css
-```
-
-```
-/
-├── .env                        # Environment variables (DB credentials, secrets) — never committed
-└── www/
-    │
-    └── Portfolio/
-        │
-        ├── main/
-        │   ├── about.html              # Page "à propos"
-        │   ├── contact.html            # Page de contact
-        │   ├── legal_notices.html      # Mentions légales
-        │   ├── privacy_policy.html     # Politique de confidentialité
-        │   └── projects.html           # Page des projets
-        │
-        ├── google071578dbdfbc3c7f.html # Fichier de vérification Google Search Console
-        ├── index.php                   # Page d'accueil
-        ├── sitemap.xml                 # Plan du site pour les moteurs de recherche
-        │
-        └── assets/
-            │
-            ├── icones/                 # Icônes du site
-            │
-            ├── js/
-            │   └── app.js              # Script JavaScript principal
-            │
-            └── styles/
-                └── styles.css          # Feuille de style principale
 ```
 
  ## Internationalization
