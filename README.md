@@ -1,8 +1,7 @@
 ## Portfolio
 
-Découvrez mon portfolio en ligne : **[pt-nb.alwaysdata.net](https://pt-nb.alwaysdata.net/)**
-
-Ce repo contient le code source de mon site personnel, développé en PHP/HTML/CSS/JS.
+Discover my portfolio online here : **[pt-nb.alwaysdata.net](https://pt-nb.alwaysdata.net/)**
+This repo contains the source code of my personal website, made with love in PHP/HTML/CSS/JS.
 
 ## Structure
 
@@ -39,5 +38,17 @@ Ce repo contient le code source de mon site personnel, développé en PHP/HTML/C
 
 The site detects the browser language on first load and displays content in French or English accordingly. The logic lives in `lang.php`, static text is in `fr.php` / `en.php`, and recipes have `_en` columns in the database with automatic fallback to French if the translation hasn't been filled in yet.
 
+## Legal notices
+* [Legal notice](https://homekitchenclub.alwaysdata.net/mentions-legales)
+
 ## Author
-Nicolas Boulloud
+
+Nicolas Boulloud — [LinkedIn](https://www.linkedin.com/in/nicolas-boulloud/)
+
+## License
+
+This project is proprietary — all rights reserved. See the LICENSE file for details.
+
+See also NOTICE.md for additional usage restrictions (including AI training).
+
+© 2026 Nicolas Boulloud.
